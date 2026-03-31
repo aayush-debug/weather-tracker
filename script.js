@@ -1,5 +1,5 @@
 // API key - Replace with your own from OpenWeatherMap
-const API_KEY = 'YOUR_API_KEY_HERE'; // Sign up at https://openweathermap.org/api
+const API_KEY = 'AIzaSyCkjfW3FzVIauJd2ZjqNsBW9hPCluBFK-w'; // Sign up at https://openweathermap.org/api
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
 // DOM elements
@@ -13,6 +13,8 @@ const cityName = document.getElementById('city-name');
 const weatherIcon = document.getElementById('weather-icon');
 const temperature = document.getElementById('temperature');
 const humidity = document.getElementById('humidity');
+const feelsLike = document.getElementById('feels-like');
+const pressure = document.getElementById('pressure');
 const description = document.getElementById('description');
 const forecastCards = document.getElementById('forecast-cards');
 const searchHistory = document.getElementById('search-history');
@@ -125,6 +127,8 @@ function displayWeather(data) {
     weatherIcon.src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     temperature.textContent = formatTemperature(data.main.temp);
     humidity.textContent = `Humidity: ${data.main.humidity}%`;
+    feelsLike.textContent = `Feels like ${formatTemperature(data.main.feels_like)}`;
+    pressure.textContent = `${data.main.pressure} hPa`;
     description.textContent = data.weather[0].description;
 }
 
