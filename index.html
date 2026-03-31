@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Anytime</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Weather Anytime</h1>
+            <div class="controls">
+                <button id="theme-toggle">🌙</button>
+                <button id="unit-toggle">°C</button>
+            </div>
+        </header>
+        <main>
+            <div class="search-section">
+                <input type="text" id="city-input" placeholder="Enter city name...">
+                <button id="search-btn">Search</button>
+                <button id="location-btn">📍</button>
+            </div>
+            <div id="loading" class="loading hidden">Loading...</div>
+            <div id="error" class="error hidden"></div>
+            <div id="weather-display" class="weather-display hidden">
+                <div class="current-weather">
+                    <h2 id="city-name"></h2>
+                    <div class="weather-main">
+                        <img id="weather-icon" src="" alt="Weather icon">
+                        <div class="temp-humidity">
+                            <p id="temperature"></p>
+                            <p id="humidity"></p>
+                        </div>
+                    </div>
+                    <p id="description"></p>
+                </div>
+                <div class="forecast">
+                    <h3>5-Day Forecast</h3>
+                    <div id="forecast-cards" class="forecast-cards"></div>
+                </div>
+            </div>
+            <div id="search-history" class="search-history hidden">
+                <h3>Recent Searches</h3>
+                <ul id="history-list"></ul>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
