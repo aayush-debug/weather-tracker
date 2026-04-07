@@ -3,17 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Weather Anytime</title>
+  <title>AirFlow - Air Quality & Weather Monitor</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
   <div class="app-shell">
     <aside class="sidebar">
       <div class="brand">
-        <span class="brand-icon">☁️</span>
+        <span class="brand-icon">💨</span>
         <div>
-          <h1>Weather Anytime</h1>
-            <p class="tagline">Your local weather, anywhere</p>
+          <h1>AirFlow</h1>
+          <p class="tagline">Air Quality & Weather Monitor</p>
         </div>
       </div>
       <div class="mode-control">
@@ -29,7 +30,7 @@
           <button id="search-btn">Search</button>
           <button id="location-btn" title="Use current location">📍</button>
         </div>
-        <div id="loading" class="loading hidden">Fetching weather...</div>
+        <div id="loading" class="loading hidden">Fetching data...</div>
         <p id="error" class="error hidden"></p>
       </section>
 
@@ -63,6 +64,74 @@
             <strong id="pressure">--</strong>
           </div>
         </div>
+
+        <div class="weather-grid">
+          <div class="weather-card">
+            <span class="weather-label">Wind Speed</span>
+            <strong id="wind-speed">--</strong>
+          </div>
+          <div class="weather-card">
+            <span class="weather-label">Wind Direction</span>
+            <strong id="wind-direction">--</strong>
+          </div>
+          <div class="weather-card">
+            <span class="weather-label">Visibility</span>
+            <strong id="visibility">--</strong>
+          </div>
+          <div class="weather-card">
+            <span class="weather-label">Cloud Cover</span>
+            <strong id="cloud-cover">--</strong>
+          </div>
+          <div class="weather-card">
+            <span class="weather-label">UV Index</span>
+            <strong id="uv-index">--</strong>
+          </div>
+          <div class="weather-card">
+            <span class="weather-label">Dew Point</span>
+            <strong id="dew-point">--</strong>
+          </div>
+        </div>
+
+        <div class="sun-times">
+          <div class="time-info">
+            <span class="time-label">🌅 Sunrise</span>
+            <strong id="sunrise-time">--</strong>
+          </div>
+          <div class="time-info">
+            <span class="time-label">🌇 Sunset</span>
+            <strong id="sunset-time">--</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="aqi-display" class="aqi-panel hidden">
+        <header class="panel-title">
+          <h3>Air Quality Index</h3>
+        </header>
+        <div class="aqi-container">
+          <div class="aqi-gauge">
+            <div class="aqi-score" id="aqi-value">--</div>
+            <div class="aqi-label" id="aqi-label">--</div>
+          </div>
+          <div class="aqi-details">
+            <div class="aqi-stat">
+              <span>PM2.5</span>
+              <strong id="pm25">--</strong>
+            </div>
+            <div class="aqi-stat">
+              <span>PM10</span>
+              <strong id="pm10">--</strong>
+            </div>
+            <div class="aqi-stat">
+              <span>O₃</span>
+              <strong id="o3">--</strong>
+            </div>
+            <div class="aqi-stat">
+              <span>NO₂</span>
+              <strong id="no2">--</strong>
+            </div>
+          </div>
+        </div>
       </section>
 
       <section class="forecast-panel">
@@ -72,8 +141,22 @@
         <div id="forecast-cards" class="forecast-cards"></div>
       </section>
 
+      <section id="historical-data" class="historical-panel hidden">
+        <header class="panel-title">
+          <h3>Historical Data (Last 7 Days)</h3>
+          <div class="chart-toggle">
+            <button id="chart-temp" class="chart-btn active" data-chart="temp">Temperature</button>
+            <button id="chart-aqi" class="chart-btn" data-chart="aqi">Air Quality</button>
+            <button id="chart-humidity" class="chart-btn" data-chart="humidity">Humidity</button>
+          </div>
+        </header>
+        <div class="chart-container">
+          <canvas id="history-chart"></canvas>
+        </div>
+      </section>
+
       <section id="search-history" class="history-panel hidden">
-        <h4>Recent Search</h4>
+        <h4>Recent Searches</h4>
         <ul id="history-list"></ul>
       </section>
     </main>
