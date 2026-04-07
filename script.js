@@ -1,5 +1,5 @@
 // API keys
-const API_KEY = 'AIzaSyCkjfW3FzVIauJd2ZjqNsBW9hPCluBFK-w'; // OpenWeatherMap API key
+const API_KEY = 'AIzaSyDgfB9lbI2iOVY8wRPgCP03MjNg2vpL9ZE'; // Replace with your OpenWeatherMap API key from https://openweathermap.org/api
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 const AIR_QUALITY_URL = 'https://api.openweathermap.org/data/3.0/stations';
 const POLLUTION_URL = 'https://api.openweathermap.org/data/2.5/air_pollution';
